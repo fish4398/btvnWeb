@@ -29,22 +29,28 @@ hãy thông báo ra màn hình nội dung “Input files have unknow errors !!!�
     public static void checkName(){
         int count = 0;
         while (count < 3){
+            if(count >= 1) System.out.println("Moi bạn nhap lai");
             String fullName = sc.nextLine();
             if (fullName.length() >= 10 && fullName.length() <= 50) break;
-            else System.out.println("Input files have unknow errors !!! Please try again!");
+            else System.out.println("Input files have unknow errors !!!");
             count++;
         }
     }
 
     public static void checkPhoneNumber(String number){
         String[] startNumber = {"090", "098", "091", "031", "035", "038"};
-        if((number.length() == 10) && Arrays.stream(startNumber).anyMatch(n -> number.startsWith(n))) {
-            System.out.println("Pass");
-        }else System.out.println("Throw InvalidPhoneNumberException");
+        try {
+            Integer.parseInt(number);
+            if((number.length() == 10) && Arrays.stream(startNumber).anyMatch(n -> number.startsWith(n))) {
+                System.out.println("Pass");
+            }else System.out.println("Nhap sai dinh dang so dien thoai");
+        }catch (NumberFormatException e){
+            System.out.println("Throw InvalidPhoneNumberException");
+        }
     }
 
     public static void checkBirth(String birth){
-        
+
     }
 
 }
