@@ -7,27 +7,14 @@ public class Student {
     private int phoneNumber;
     private String universityName;
     private String gradeLevel;
-    private GoodStudent goodStudent;
-    private NormalStudent normalStudent;
 
-    public Student(String fullName, String doB, String sex, int phoneNumber, String universityName, String gradeLevel, GoodStudent goodStudent) {
+    public Student(String fullName, String doB, String sex, int phoneNumber, String universityName, String gradeLevel) {
         this.fullName = fullName;
         this.doB = doB;
         this.sex = sex;
         this.phoneNumber = phoneNumber;
         this.universityName = universityName;
         this.gradeLevel = gradeLevel;
-        this.goodStudent = goodStudent;
-    }
-
-    public Student(String fullName, String doB, String sex, int phoneNumber, String universityName, String gradeLevel, NormalStudent normalStudent) {
-        this.fullName = fullName;
-        this.doB = doB;
-        this.sex = sex;
-        this.phoneNumber = phoneNumber;
-        this.universityName = universityName;
-        this.gradeLevel = gradeLevel;
-        this.normalStudent = normalStudent;
     }
 
     public String getFullName() {
@@ -78,21 +65,15 @@ public class Student {
         this.gradeLevel = gradeLevel;
     }
 
-    public GoodStudent getGoodStudent() {
-        return this.goodStudent;
+    @Override
+    public String toString() {
+        return "Student{" +
+                "fullName='" + fullName + '\'' +
+                ", doB='" + doB + '\'' +
+                ", sex='" + sex + '\'' +
+                ", phoneNumber=" + phoneNumber +
+                ", universityName='" + universityName + '\'' +
+                ", gradeLevel='" + gradeLevel +
+                '}';
     }
-
-    public void setGoodStudent(GoodStudent goodStudent) {
-        this.goodStudent = goodStudent;
-    }
-
-    public NormalStudent getNormalStudent() {
-        return this.normalStudent;
-    }
-
-    public void setNormalStudent(NormalStudent normalStudent) {
-        this.normalStudent = normalStudent;
-    }
-
-
 }

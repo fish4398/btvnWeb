@@ -1,12 +1,15 @@
 package QLTuyenSinh;
 
-public class GoodStudent {
+public class GoodStudent extends Student{
     private float gpa;
     private String bestRewardName;
+    private Student student;
 
-    public GoodStudent(float gpa, String bestRewardName) {
+    public GoodStudent(String fullName, String doB, String sex, int phoneNumber, String universityName, String gradeLevel, float gpa, String bestRewardName, Student student) {
+        super(fullName, doB, sex, phoneNumber, universityName, gradeLevel);
         this.gpa = gpa;
         this.bestRewardName = bestRewardName;
+        this.student = student;
     }
 
     public float getGpa() {
@@ -25,11 +28,20 @@ public class GoodStudent {
         this.bestRewardName = bestRewardName;
     }
 
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
+    }
+
     @Override
     public String toString() {
         return "GoodStudent{" +
                 "gpa=" + gpa +
                 ", bestRewardName='" + bestRewardName + '\'' +
+                ", student=" + student +
                 '}';
     }
 }

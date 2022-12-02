@@ -3,24 +3,35 @@ package QLTuyenSinh;
 import java.util.List;
 
 public class ListStudent {
-    private List<Student> studentList;
+    private List<GoodStudent> goodStudentList;
+    private List<NormalStudent> normalStudentList;
 
-    public ListStudent(List<Student> studentList) {
-        this.studentList = studentList;
+    public ListStudent(List<GoodStudent> goodStudentList, List<NormalStudent> normalStudentList) {
+        this.goodStudentList = goodStudentList;
+        this.normalStudentList = normalStudentList;
     }
 
-    public List<Student> getStudentList() {
-        return studentList;
+    public List<GoodStudent> getGoodStudentList() {
+        return goodStudentList;
     }
 
-    public void setStudentList(List<Student> studentList) {
-        this.studentList = studentList;
+    public void setGoodStudentList(List<GoodStudent> goodStudentList) {
+        this.goodStudentList = goodStudentList;
+    }
+
+    public List<NormalStudent> getNormalStudentList() {
+        return normalStudentList;
+    }
+
+    public void setNormalStudentList(List<NormalStudent> normalStudentList) {
+        this.normalStudentList = normalStudentList;
     }
 
     @Override
     public String toString() {
         return "ListStudent{" +
-                "studentList=" + studentList +
+                "goodStudentList=" + goodStudentList +
+                ", normalStudentList=" + normalStudentList +
                 '}';
     }
 }

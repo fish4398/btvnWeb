@@ -2,12 +2,13 @@ package QLTuyenSinh;
 
 
 import java.text.ParseException;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Scanner;
+import java.text.SimpleDateFormat;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class Test {
     private static final Scanner sc = new Scanner(System.in);
+    private static ListStudent listStudent;
     /*
     Họ tên sinh viên có chiều dài tối đa là 50 ký tự và tổi thiểu là 10 ký tự.
     Nếu sai cho phép nhập tổng 3 lần. Quá hạn dừng chương trình và không được nhập thông tin nữa
@@ -18,39 +19,64 @@ các chuỗi số: 090, 098, 091, 031, 035 hoặc 038. Throw InvalidPhoneNumberE
 Ngoài ra nếu có bất cứ một exception nào khác trong quá trình thực thi chương trình,
 hãy thông báo ra màn hình nội dung “Input files have unknow errors !!!”
      */
-    public static void main(String[] args) throws ParseException {
-        checkPhoneNumber("0991234567");
+    public static void main(String[] args) {
+        checkPhoneNumber("0981234567");
+        checkBirth("04/03/1198");
     }
 
-    public static void checkInfor(String fullname, String birth, String number){
-
+    public static boolean checkName(String fullName){
+        if (fullName.length() >= 10 && fullName.length() <= 50) return true;
+        else return false;
     }
 
-    public static void checkName(){
-        int count = 0;
-        while (count < 3){
-            if(count >= 1) System.out.println("Moi bạn nhap lai");
-            String fullName = sc.nextLine();
-            if (fullName.length() >= 10 && fullName.length() <= 50) break;
-            else System.out.println("Input files have unknow errors !!!");
-            count++;
-        }
-    }
-
-    public static void checkPhoneNumber(String number){
+    public static boolean checkPhoneNumber(String number){
         String[] startNumber = {"090", "098", "091", "031", "035", "038"};
         try {
             Integer.parseInt(number);
             if((number.length() == 10) && Arrays.stream(startNumber).anyMatch(n -> number.startsWith(n))) {
-                System.out.println("Pass");
-            }else System.out.println("Nhap sai dinh dang so dien thoai");
+                return true;
+            }else return false;
         }catch (NumberFormatException e){
             System.out.println("Throw InvalidPhoneNumberException");
+            return false;
         }
     }
 
-    public static void checkBirth(String birth){
+    public static boolean checkBirth(String birth){
 
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        simpleDateFormat.setLenient(false);
+        try {
+            Date dateBirth = simpleDateFormat.parse(birth);
+            System.out.println(dateBirth);
+        }catch (ParseException e){
+            System.out.println("Throw InvalidDOBException");
+            return false;
+        }
+        return true;
+    }
+
+    public static void printTrungTuyen(int soNguoi){
+        int soluongGood = (int) listStudent.getGoodStudentList().stream().count();
+        if(soNguoi <= soluongGood){
+            listStudent.getGoodStudentList().stream().sorted((o1, o2)->{
+                if(o1.getGpa() == o2.getGpa())
+                    return o1.getFullName().compareTo(o2.getFullName());
+                else if(o1.getGpa() > o2.getGpa()) return 1;
+                else return -1;
+            }).limit(soNguoi).forEach(System.out::println);
+        }else {
+            listStudent.getGoodStudentList().forEach(System.out::println);
+            listStudent.getNormalStudentList().stream().sorted((o1, o2)->{
+                if(o1.getEntryTestScore() == o2.getEntryTestScore()){
+                    if(o1.getEnglishScore() == o2.getEnglishScore()){
+                        return o1.getFullName().compareTo(o2.getFullName());
+                    }else if (o1.getEnglishScore() > o2.getEnglishScore()) return 1;
+                    else return -1;
+                } else if (o1.getEntryTestScore() > o2.getEntryTestScore()) return 1;
+                else return -1;
+            }).limit(soNguoi - soluongGood).forEach(System.out::println);
+        }
     }
 
 }
