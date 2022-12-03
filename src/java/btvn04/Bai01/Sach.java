@@ -1,15 +1,16 @@
-package QLThuVien;
+package Bai01;
 
-public class Sach {
+public class Sach extends TaiLieu{
     private String tenTacGia;
     private int soTrang;
 
-    public Sach(String tenTacGia, int soTrang) {
+    public Sach(String tenNXB, String soPhatHanh, String maTL, String tenTacGia, int soTrang) {
+        super(tenNXB, soPhatHanh, maTL);
         this.tenTacGia = tenTacGia;
         this.soTrang = soTrang;
     }
 
-    public Sach(){}
+    public Sach(){super();}
 
     public String getTenTacGia() {
         return this.tenTacGia;
@@ -29,9 +30,6 @@ public class Sach {
 
     @Override
     public String toString() {
-        return "Sach{" +
-                "tenTacGia='" + tenTacGia + '\'' +
-                ", soTrang=" + soTrang +
-                '}';
+        return "Sach: Ma tai lieu=" + getMaTL() +"; NXB=" + getTenNXB() + "; So phat hanh=" + getSoPhatHanh() + "; Ten tac gia=" + this.tenTacGia + "; So trang=" + this.soTrang;
     }
 }
