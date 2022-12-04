@@ -1,4 +1,4 @@
-package Bai01;
+package QLThuVien;
 
 public class TapChi extends TaiLieu{
     private int thangPhatHanh;
