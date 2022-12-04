@@ -1,4 +1,4 @@
-package QLTuyenSinh;
+package btvn04.QLTuyenSinh;
 
 import java.util.List;
 

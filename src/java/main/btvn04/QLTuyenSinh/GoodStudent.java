@@ -1,4 +1,4 @@
-package QLTuyenSinh;
+package btvn04.QLTuyenSinh;
 
 public class GoodStudent extends Student{
     private float gpa;

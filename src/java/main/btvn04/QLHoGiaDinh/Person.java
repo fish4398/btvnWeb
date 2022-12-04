@@ -1,4 +1,4 @@
-package QLHoGiaDinh;
+package btvn04.QLHoGiaDinh;
 
 public class Person {
     private String fullName;

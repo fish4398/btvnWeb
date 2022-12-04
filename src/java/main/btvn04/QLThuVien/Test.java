@@ -1,4 +1,4 @@
-package QLThuVien;
+package btvn04.QLThuVien;
 
 public class Test {
     /*

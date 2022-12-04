@@ -1,10 +1,9 @@
-package QLTuyenSinh;
+package btvn04.QLTuyenSinh;
 
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class Test {
     private static final Scanner sc = new Scanner(System.in);
