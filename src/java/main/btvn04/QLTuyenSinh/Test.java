@@ -19,13 +19,27 @@ Ngoài ra nếu có bất cứ một exception nào khác trong quá trình th�
 hãy thông báo ra màn hình nội dung “Input files have unknow errors !!!”
      */
     public static void main(String[] args) {
-        checkPhoneNumber("0981234567");
-        checkBirth("04/03/1198");
+        System.out.println("Nhap so hoc sinh ban muon nhap: ");
+        int n = sc.nextInt();
+        for (int i = 0; i < n; i++){
+            System.out.println("Nhap loai hoc sinh ban dien (G la good student, other la hoc sinh normal student): ");
+            String typeSt = sc.next().trim().toUpperCase();
+            String fullName = inputName();
+
+        }
     }
 
-    public static boolean checkName(String fullName){
-        if (fullName.length() >= 10 && fullName.length() <= 50) return true;
-        else return false;
+    public static String inputName(){
+        String fullName = null;
+        int count = 0;
+        while (count < 3) {
+            System.out.println("Nhap ten hoc sinh (dieu kien co chiều dài tối đa là 50 ký tự và tổi thiểu là 10 ký tự. Nếu sai cho phép nhập tổng 3 lần): ");
+            fullName = sc.next().trim();
+            if(fullName.length() >= 10 && fullName.length() <= 50) break;
+            System.out.printf("\nBan da nhap sai %s lan. Xin moi ban nhap lai ho va ten sinh vien.", count + 1);
+            count++;
+        }
+        return fullName;
     }
 
     public static boolean checkPhoneNumber(String number){
@@ -56,26 +70,30 @@ hãy thông báo ra màn hình nội dung “Input files have unknow errors !!!�
     }
 
     public static void printTrungTuyen(int soNguoi){
-        int soluongGood = (int) listStudent.getGoodStudentList().stream().count();
-        if(soNguoi <= soluongGood){
-            listStudent.getGoodStudentList().stream().sorted((o1, o2)->{
-                if(o1.getGpa() == o2.getGpa())
-                    return o1.getFullName().compareTo(o2.getFullName());
-                else if(o1.getGpa() > o2.getGpa()) return 1;
-                else return -1;
-            }).limit(soNguoi).forEach(System.out::println);
-        }else {
-            listStudent.getGoodStudentList().forEach(System.out::println);
-            listStudent.getNormalStudentList().stream().sorted((o1, o2)->{
-                if(o1.getEntryTestScore() == o2.getEntryTestScore()){
-                    if(o1.getEnglishScore() == o2.getEnglishScore()){
-                        return o1.getFullName().compareTo(o2.getFullName());
-                    }else if (o1.getEnglishScore() > o2.getEnglishScore()) return 1;
-                    else return -1;
-                } else if (o1.getEntryTestScore() > o2.getEntryTestScore()) return 1;
-                else return -1;
-            }).limit(soNguoi - soluongGood).forEach(System.out::println);
-        }
+        int countPerson = (int) listStudent.getStudentList().stream().count();
+
+
+
+//        int soluongGood = (int) listStudent.getGoodStudentList().stream().count();
+//        if(soNguoi <= soluongGood){
+//            listStudent.getGoodStudentList().stream().sorted((o1, o2)->{
+//                if(o1.getGpa() == o2.getGpa())
+//                    return o1.getFullName().compareTo(o2.getFullName());
+//                else if(o1.getGpa() > o2.getGpa()) return 1;
+//                else return -1;
+//            }).limit(soNguoi).forEach(System.out::println);
+//        }else {
+//            listStudent.getGoodStudentList().forEach(System.out::println);
+//            listStudent.getNormalStudentList().stream().sorted((o1, o2)->{
+//                if(o1.getEntryTestScore() == o2.getEntryTestScore()){
+//                    if(o1.getEnglishScore() == o2.getEnglishScore()){
+//                        return o1.getFullName().compareTo(o2.getFullName());
+//                    }else if (o1.getEnglishScore() > o2.getEnglishScore()) return 1;
+//                    else return -1;
+//                } else if (o1.getEntryTestScore() > o2.getEntryTestScore()) return 1;
+//                else return -1;
+//            }).limit(soNguoi - soluongGood).forEach(System.out::println);
+
     }
 
 }

@@ -38,10 +38,6 @@ public class GoodStudent extends Student{
 
     @Override
     public String toString() {
-        return "GoodStudent{" +
-                "gpa=" + gpa +
-                ", bestRewardName='" + bestRewardName + '\'' +
-                ", student=" + student +
-                '}';
+        return "GoodStudent[fullName= " + getFullName() + ", doB='" + getDoB() + ", sex='" + getSex() + ", phoneNumber=" + getPhoneNumber() + ", universityName='" + getUniversityName() + ", gradeLevel='" + getGradeLevel() + "gpa=" + gpa + ", bestRewardName='" + bestRewardName + ", student=" + student + ']';
     }
 }

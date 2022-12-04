@@ -1,37 +1,25 @@
 package btvn04.QLTuyenSinh;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ListStudent {
-    private List<GoodStudent> goodStudentList;
-    private List<NormalStudent> normalStudentList;
+   List<Student> studentList;
 
-    public ListStudent(List<GoodStudent> goodStudentList, List<NormalStudent> normalStudentList) {
-        this.goodStudentList = goodStudentList;
-        this.normalStudentList = normalStudentList;
+    public ListStudent() {
+        this.studentList = new ArrayList<>();
     }
 
-    public List<GoodStudent> getGoodStudentList() {
-        return goodStudentList;
+    public List<Student> getStudentList() {
+        return this.studentList;
     }
 
-    public void setGoodStudentList(List<GoodStudent> goodStudentList) {
-        this.goodStudentList = goodStudentList;
+    public void setStudentList(List<Student> studentList) {
+        this.studentList = studentList;
     }
 
-    public List<NormalStudent> getNormalStudentList() {
-        return normalStudentList;
+    public void addStudent(Student student){
+        this.studentList.add(student);
     }
 
-    public void setNormalStudentList(List<NormalStudent> normalStudentList) {
-        this.normalStudentList = normalStudentList;
-    }
-
-    @Override
-    public String toString() {
-        return "ListStudent{" +
-                "goodStudentList=" + goodStudentList +
-                ", normalStudentList=" + normalStudentList +
-                '}';
-    }
 }
