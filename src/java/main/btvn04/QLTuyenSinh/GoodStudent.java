@@ -5,7 +5,7 @@ public class GoodStudent extends Student{
     private String bestRewardName;
     private Student student;
 
-    public GoodStudent(String fullName, String doB, String sex, int phoneNumber, String universityName, String gradeLevel, float gpa, String bestRewardName, Student student) {
+    public GoodStudent(String fullName, String doB, String sex, String phoneNumber, String universityName, String gradeLevel, float gpa, String bestRewardName, Student student) {
         super(fullName, doB, sex, phoneNumber, universityName, gradeLevel);
         this.gpa = gpa;
         this.bestRewardName = bestRewardName;

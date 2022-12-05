@@ -4,11 +4,11 @@ public class Student {
     private String fullName;
     private String doB;
     private String sex;
-    private int phoneNumber;
+    private String phoneNumber;
     private String universityName;
     private String gradeLevel;
 
-    public Student(String fullName, String doB, String sex, int phoneNumber, String universityName, String gradeLevel) {
+    public Student(String fullName, String doB, String sex, String phoneNumber, String universityName, String gradeLevel) {
         this.fullName = fullName;
         this.doB = doB;
         this.sex = sex;
@@ -16,6 +16,8 @@ public class Student {
         this.universityName = universityName;
         this.gradeLevel = gradeLevel;
     }
+
+    public Student(){}
 
     public String getFullName() {
         return this.fullName;
@@ -41,11 +43,11 @@ public class Student {
         this.sex = sex;
     }
 
-    public int getPhoneNumber() {
+    public String getPhoneNumber() {
         return this.phoneNumber;
     }
 
-    public void setPhoneNumber(int phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
