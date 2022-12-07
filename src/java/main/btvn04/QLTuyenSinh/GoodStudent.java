@@ -1,6 +1,9 @@
 package btvn04.QLTuyenSinh;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class GoodStudent extends Student{
     private float gpa;
@@ -43,7 +46,7 @@ public class GoodStudent extends Student{
 
     @Override
     public String toString() {
-        return "GoodStudent[fullName= " + getFullName() + ", doB='" + getDoB() + ", sex='" + getSex() + ", phoneNumber=" + getPhoneNumber() + ", universityName='" + getUniversityName() + ", gradeLevel='" + getGradeLevel() + "gpa=" + gpa + ", bestRewardName='" + bestRewardName + ", student=" + student + ']';
+        return "GoodStudent[fullName= " + getFullName() + ", doB=" + getDoB() + ", sex=" + getSex() + ", phoneNumber=" + getPhoneNumber() + ", universityName=" + getUniversityName() + ", gradeLevel=" + getGradeLevel() + "gpa=" + gpa + ", bestRewardName=" + bestRewardName + ']';
     }
 
     public boolean checkGPA(){
@@ -65,6 +68,18 @@ public class GoodStudent extends Student{
     public void inputBestReward(){
         System.out.println("Nhap ten Best Reward cua ban: ");
         String name = sc.nextLine().trim();
+        System.out.println("Ten bang: " + name);
         this.setBestRewardName(name);
     }
+
+    List<GoodStudent> listStudent = new ArrayList<>();
+    public List<GoodStudent> compareGoodStudent(){
+        return listStudent.stream().sorted((o1, o2)->{
+                if(o1.getGpa() == o2.getGpa())
+                    return o1.getFullName().compareTo(o2.getFullName());
+                else if(o1.getGpa() > o2.getGpa()) return 1;
+                else return -1;
+    }).collect(Collectors.toList());
+    }
+
 }

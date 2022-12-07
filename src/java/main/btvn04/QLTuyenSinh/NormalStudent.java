@@ -45,7 +45,7 @@ public class NormalStudent extends Student{
 
     @Override
     public String toString() {
-        return "NormalStudent[fullName= " + getFullName() + ", doB='" + getDoB() + ", sex='" + getSex() + ", phoneNumber=" + getPhoneNumber() + ", universityName='" + getUniversityName() + ", gradeLevel='" + getGradeLevel() + "englishScore=" + englishScore + ", entryTestScore=" + entryTestScore + ", student=" + student +']';
+        return "NormalStudent[fullName= " + getFullName() + ", doB=" + getDoB() + ", sex=" + getSex() + ", phoneNumber=" + getPhoneNumber() + ", universityName=" + getUniversityName() + ", gradeLevel='" + getGradeLevel() + "englishScore=" + englishScore + ", entryTestScore=" + entryTestScore +']';
     }
 
     public boolean checkEnglishScore(){

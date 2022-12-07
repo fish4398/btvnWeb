@@ -4,6 +4,7 @@ package btvn04.QLTuyenSinh;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.stream.Stream;
 
 public class Test {
     private static final Scanner sc = new Scanner(System.in);
@@ -33,6 +34,7 @@ hãy thông báo ra màn hình nội dung “Input files have unknow errors !!!�
                 if(!student.checkGPA()) continue;
                 student.inputBestReward();
                 listStudent.addStudent(student);
+
             }
             else {
                 NormalStudent student = new NormalStudent();
@@ -46,20 +48,19 @@ hãy thông báo ra màn hình nội dung “Input files have unknow errors !!!�
 
         }
         System.out.println("list danh sach hoc sinh la ");
-        listStudent.getStudentList().forEach(Student::toString);
+        listStudent.getStudentList().forEach(v-> System.out.println(v.toString()));
 
-    }
-
-
-    public static Student typeStudent(Student student){
-        System.out.println("Nhap loai hoc sinh ban dien (G la good student, other la hoc sinh normal student): ");
-        String typeSt = sc.next().trim().toUpperCase();
-        if(typeSt.equals("G")) return student = new GoodStudent();
-        else return student = new NormalStudent();
     }
 
     public static void printTrungTuyen(int soNguoi){
+        ListStudent listGoodStudent = new ListStudent();
+        ListStudent listNormalStudent = new ListStudent();
         int countPerson = listStudent.getStudentList().size();
+        listStudent.getStudentList().stream().forEach(v->{
+            if(v.toString().startsWith("GoodStudent")) listGoodStudent.addStudent(v);
+            else listNormalStudent.addStudent(v);
+        });
+
 
 
 //        int soluongGood = (int) listStudent.getGoodStudentList().stream().count();
