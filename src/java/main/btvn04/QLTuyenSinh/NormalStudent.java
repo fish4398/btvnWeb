@@ -10,11 +10,10 @@ public class NormalStudent extends Student{
     private static final Scanner sc = new Scanner(System.in);
     private Student student;
 
-    public NormalStudent(String fullName, String doB, String sex, String phoneNumber, String universityName, String gradeLevel, float englishScore, float entryTestScore, Student student) {
+    public NormalStudent(String fullName, String doB, String sex, String phoneNumber, String universityName, String gradeLevel, float englishScore, float entryTestScore) {
         super(fullName, doB, sex, phoneNumber, universityName, gradeLevel);
         this.englishScore = englishScore;
         this.entryTestScore = entryTestScore;
-        this.student = student;
     }
 
     public NormalStudent(){super();}

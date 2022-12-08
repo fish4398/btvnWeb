@@ -4,6 +4,7 @@ package btvn04.QLTuyenSinh;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Test {
@@ -22,6 +23,8 @@ hãy thông báo ra màn hình nội dung “Input files have unknow errors !!!�
     public static void main(String[] args) {
         System.out.println("Nhap so hoc sinh ban muon nhap: ");
         int n = sc.nextInt();
+        List<GoodStudent> goodStudentList = new ArrayList<>();
+        List<NormalStudent> normalStudentList = new ArrayList<>();
         for (int i = 0; i < n; i++){
             System.out.println("Nhap loai hoc sinh ban dien (G la good student, other la hoc sinh normal student): ");
             String typeSt = sc.next().trim().toUpperCase();
@@ -33,8 +36,14 @@ hãy thông báo ra màn hình nội dung “Input files have unknow errors !!!�
                 student.inputGradeLevel();
                 if(!student.checkGPA()) continue;
                 student.inputBestReward();
-                listStudent.addStudent(student);
 
+                goodStudentList.add(student);
+                goodStudentList.stream().sorted((o1, o2) -> {
+                    if(o1.getGpa() == o2.getGpa())
+                        return o1.getFullName().compareTo(o2.getFullName());
+                    else if(o1.getGpa() > o2.getGpa()) return 1;
+                    else return -1;
+                }).collect(Collectors.toList());
             }
             else {
                 NormalStudent student = new NormalStudent();
@@ -44,8 +53,38 @@ hãy thông báo ra màn hình nội dung “Input files have unknow errors !!!�
                 student.inputGradeLevel();
                 if(!student.checkEnglishScore() || !student.checkEntryTestScore()) continue;
                 listStudent.addStudent(student);
+
+                normalStudentList.add(student);
+                normalStudentList.stream().sorted((o1, o2) -> {
+                    if(o1.getEntryTestScore() == o2.getEntryTestScore()){
+                    if(o1.getEnglishScore() == o2.getEnglishScore()){
+                        return o1.getFullName().compareTo(o2.getFullName());
+                    }else if (o1.getEnglishScore() > o2.getEnglishScore()) return 1;
+                    else return -1;
+                } else if (o1.getEntryTestScore() > o2.getEntryTestScore()) return 1;
+                else return -1;
+                }).collect(Collectors.toList());
             }
 
+        }
+
+        System.out.println("Nhap so luong tuyen sinh: ");
+        try {
+            int i = sc.nextInt();
+            int numGoodStudent = goodStudentList.size();
+            int numNormalStudent = normalStudentList.size();
+            System.out.println("Nhung nguoi trung tuyen la: ");
+            if(i < numGoodStudent) goodStudentList.forEach(v-> System.out.println(v.toString()));
+            else if(i < numGoodStudent + numNormalStudent){
+                goodStudentList.forEach(v-> System.out.println(v.toString()));
+                normalStudentList.stream().limit(i - numGoodStudent).forEach(v-> System.out.println(v.toString()));
+            }
+            else if(i > numGoodStudent + numNormalStudent){
+                goodStudentList.forEach(v-> System.out.println(v.toString()));
+                normalStudentList.forEach(v-> System.out.println(v.toString()));
+            }
+        }catch (Exception e){
+            e.printStackTrace();
         }
         System.out.println("list danh sach hoc sinh la ");
         listStudent.getStudentList().forEach(v-> System.out.println(v.toString()));
@@ -60,28 +99,6 @@ hãy thông báo ra màn hình nội dung “Input files have unknow errors !!!�
             if(v.toString().startsWith("GoodStudent")) listGoodStudent.addStudent(v);
             else listNormalStudent.addStudent(v);
         });
-
-
-
-//        int soluongGood = (int) listStudent.getGoodStudentList().stream().count();
-//        if(soNguoi <= soluongGood){
-//            listStudent.getGoodStudentList().stream().sorted((o1, o2)->{
-//                if(o1.getGpa() == o2.getGpa())
-//                    return o1.getFullName().compareTo(o2.getFullName());
-//                else if(o1.getGpa() > o2.getGpa()) return 1;
-//                else return -1;
-//            }).limit(soNguoi).forEach(System.out::println);
-//        }else {
-//            listStudent.getGoodStudentList().forEach(System.out::println);
-//            listStudent.getNormalStudentList().stream().sorted((o1, o2)->{
-//                if(o1.getEntryTestScore() == o2.getEntryTestScore()){
-//                    if(o1.getEnglishScore() == o2.getEnglishScore()){
-//                        return o1.getFullName().compareTo(o2.getFullName());
-//                    }else if (o1.getEnglishScore() > o2.getEnglishScore()) return 1;
-//                    else return -1;
-//                } else if (o1.getEntryTestScore() > o2.getEntryTestScore()) return 1;
-//                else return -1;
-//            }).limit(soNguoi - soluongGood).forEach(System.out::println);
 
     }
 

@@ -1,21 +1,21 @@
 package btvn04.QLTuyenSinh;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
-public class GoodStudent extends Student{
+public class GoodStudent extends Student implements Serializable {
     private float gpa;
     private String bestRewardName;
     private Student student;
 
     private static final Scanner sc = new Scanner(System.in);
-    public GoodStudent(String fullName, String doB, String sex, String phoneNumber, String universityName, String gradeLevel, float gpa, String bestRewardName, Student student) {
+    public GoodStudent(String fullName, String doB, String sex, String phoneNumber, String universityName, String gradeLevel, float gpa, String bestRewardName) {
         super(fullName, doB, sex, phoneNumber, universityName, gradeLevel);
         this.gpa = gpa;
         this.bestRewardName = bestRewardName;
-        this.student = student;
     }
 
     public GoodStudent(){super();}
